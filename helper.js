@@ -1,6 +1,7 @@
 var bcrypt = require('bcryptjs');
 var User = require('./models').User
 var HotelUser = require('./models').HotelUser
+var Hotel = require('./models').Hotel
 
 function createUser(firstName, lastName, email, password){
 
@@ -20,6 +21,19 @@ function createUser(firstName, lastName, email, password){
 
 }
 
+function createHotel(name){
+    
+    Hotel.create({
+        name : name,
+    },
+    function (err, hoteluser) {
+        if (err) {
+            console.log("ERR: ", err);
+        }
+    })
+
+}
+
 function createHotelUser(hotel_id, user_id){
     
     HotelUser.create({
@@ -31,8 +45,15 @@ function createHotelUser(hotel_id, user_id){
             console.log("ERR: ", err);
         }
     })
+    return
 
 }
 
 createUser('John', 'Mclain', 'john@lalaland.com', "yipeekayak");
+createUser('Jake', 'Peralta', 'jake@brooklyn.com', "notadoctor");
+
+createHotel("Hotel A");
 createHotelUser(1,1);
+
+createHotel("Hotel B");
+createHotelUser(2,2);

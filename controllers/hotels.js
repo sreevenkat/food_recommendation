@@ -36,20 +36,5 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
-
-  addWithDishes(req, res) {
-    return Hotel
-      .create({
-        name: req.body.name,
-        dishes: req.body.dishes,
-        hotelusers: req.body.users
-      }, {
-        include: [{
-          model: Dish,
-          as: 'dishes'
-        }]
-      })
-      .then((hotel) => res.status(201).send(hotel))
-      .catch((error) => res.status(400).send(error));
-  },
+  
 };

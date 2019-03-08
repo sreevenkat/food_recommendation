@@ -21,5 +21,5 @@ router.delete('/api/dishes/:id', VerifyToken, dishController.delete);
 
 router.get('/api/hotel', VerifyToken, hotelController.list);
 router.get('/api/hotel/:id', VerifyToken, hotelController.getById);
-router.post('/api/hotel/add_with_dishes', VerifyToken, hotelController.addWithDishes);
+
 module.exports = router;
