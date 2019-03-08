@@ -1,0 +1,24 @@
+ version: '2'
+
+ services:
+    db:
+     image: library/postgres:9.4
+     volumes:
+       - ./postgres:/var/lib/postgresql/data
+     ports:
+       - "5432:5432"
+
+    node:
+     image: foodapi
+     env_file:
+       - ./web_variables.env
+     volumes:
+       - ./:/app
+     ports:
+       - "3000:3000"
+     command: "npm start"
+     depends_on:
+       - db
+     links:
+       - db
+
