@@ -53,7 +53,7 @@ Response
     }
 ```
 
-### List Dish
+### List Dishes
 
 ```
 curl -i -H "Content-Type: application/json" -H "x-access-token: <your-token-here>" localhost:3000/api/dishes/
@@ -185,3 +185,8 @@ Response
   .
 ]
 ```
+
+What I couldn't do but would do in the next iteration
+
+1. Finish the kubernetes build i was trying to get working
+2. Switch to FeathersJS to convert this app into a microservices architecture 
