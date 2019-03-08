@@ -28,11 +28,15 @@ Next run `make seed` which will populate the database with 2 users, 2 hotels and
 
 User 1
 
-`curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "john@lalaland.com","password":"yipeekayak"}' localhost:3000/api/login`
+```
+curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "john@lalaland.com","password":"yipeekayak"}' localhost:3000/api/login
+```
 
 User2
 
-`curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "jake@brooklyn.com","password":"notadoctor"}' localhost:3000/api/login`
+```
+curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "jake@brooklyn.com","password":"notadoctor"}' localhost:3000/api/login
+```
     
 Response
 
@@ -49,9 +53,57 @@ Response
     }
 ```
 
+### List Dish
+
+```
+curl -i -H "Content-Type: application/json" -H "x-access-token: <your-token-here>" localhost:3000/api/dishes/
+```
+
+Response
+
+```
+[
+  {
+    "id":2,
+    "name":"Mushroom",
+    "hotel_id":1,
+    "price":null,
+    "createdAt":"2019-03-08T03:25:17.530Z",
+    "updatedAt":"2019-03-08T03:25:17.530Z",
+    "Hotel":{
+      "id":1,
+      "name":"Hotel E",
+      "createdAt":"2019-03-08T03:25:17.501Z",
+      "updatedAt":"2019-03-08T03:25:17.501Z"
+    }
+  },
+  .
+  .
+  .
+]
+```
+
 ### Get Dish
 ```
-curl -i -X DELETE -H "Content-Type: application/json" -H "x-access-token: <your-token-here>" localhost:3000/api/dishes/1
+curl -i -H "Content-Type: application/json" -H "x-access-token: <your-token-here>" localhost:3000/api/dishes/1
+```
+
+Response
+```
+{
+  "id":2,
+  "name":"Mushroom",
+  "hotel_id":1,
+  "price":null,
+  "createdAt":"2019-03-08T03:25:17.530Z",
+  "updatedAt":"2019-03-08T03:25:17.530Z",
+  "Hotel":{
+    "id":1,
+    "name":"Hotel E",
+    "createdAt":"2019-03-08T03:25:17.501Z",
+    "updatedAt":"2019-03-08T03:25:17.501Z"
+  }
+}
 ```
 
 ### Create Dish
@@ -59,20 +111,77 @@ curl -i -X DELETE -H "Content-Type: application/json" -H "x-access-token: <your-
 curl -i -X POST -H "Content-Type: application/json" -H "x-access-token:<your-token-here>" -d '{"name": "hakunamatata3","hotel_id":1}' localhost:3000/api/dishes/
 ```
 
+Response
+```
+{
+  "id":18,
+  "hotel_id":1,
+  "name":"hakunamatata3",
+  "updatedAt":"2019-03-08T01:26:14.542Z",
+  "createdAt":"2019-03-08T01:26:14.542Z",
+  "price":null
+}
+```
+
+
 ### Update Dish
 ```
 curl -i -X PUT -H "ConteOST-Type: application/json" -H "x-access-token:<your-token-here>" -d '{"name": "hakunamatata1",hotel_id:1}' localhost:3000/api/dishes/
+```
+
+Response
+
+```
+{
+  "id":1,
+  "name":"hakunamatata1",
+  "hotel_id":1,
+  "price":null,
+  "createdAt":"2019-03-07T07:14:44.401Z",
+  "updatedAt":"2019-03-08T01:22:05.006Z",
+  "Hotel":{
+    "id":1,
+    "name":"Hotel A",
+    "createdAt":"2019-03-07T07:14:44.339Z",
+    "updatedAt":"2019-03-07T07:14:44.339Z"
+   }
+}
 ```
 
 ### Delete Dish
 ```
 curl -i -X DELETE -H "Content-Type: application/json" -H "x-access-token:<your-token-here>" localhost:3000/api/dishes/9
 ```
-### List Dishes
-```
-curl -i -H "Content-Type: application/json" -H "x-access-token:<your-token-here>" localhost:3000/api/dishes/
-```
+
+Response: 204 No content
+
 ### List Hotels
 ```
 curl -i -H "Content-Type: application/json" -H "x-access-token: " localhost:3000/api/hotel/
+```
+
+Response
+```
+[
+  {
+    "id":2,
+    "name":"Hotel B",
+    "createdAt":"2019-03-08T07:21:58.531Z",
+    "updatedAt":"2019-03-08T07:21:58.531Z",
+    "dishes":[{
+      "id":1,
+      "name":"hakunamatata1",
+      "hotel_id":1,
+      "price":null,
+      "createdAt":"2019-03-07T07:14:44.401Z",
+      "updatedAt":"2019-03-08T01:22:05.006Z",
+     },
+     .
+     .
+    ]
+  },
+  .
+  .
+  .
+]
 ```
