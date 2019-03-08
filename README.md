@@ -39,7 +39,7 @@ Response
 ``` javascript
     {
       "auth":true,
-      "token: {
+      "token": {
         "id":4,
         "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUyMDI2MTIzLCJleHAiOjE1NTIxMTI1MjN9.I-K7Zge7o2lsvspqNfuHzEXsjgtKwlfIZBNp3KlPHGw",
         "user_id":1,
