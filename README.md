@@ -26,11 +26,26 @@ Next run `make seed` which will populate the database with 2 users, 2 hotels and
 
 ### Login
 
-    User 1
-    curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "john@lalaland.com","password":"yipeekayak"}' localhost:3000/api/login
+   User 1
 
-    User2
-    curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "jake@brooklyn.com","password":"notadoctor"}' localhost:3000/api/login
+    `curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "john@lalaland.com","password":"yipeekayak"}' localhost:3000/api/login`
+
+   User2
+    `curl -i -X POST -H "Content-Type: application/json" -d '{ "email": "jake@brooklyn.com","password":"notadoctor"}' localhost:3000/api/login`
+    
+    Response
+    ```
+    javascript
+    {
+      "auth":true,"token: {
+      "id":4,
+      "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTUyMDI2MTIzLCJleHAiOjE1NTIxMTI1MjN9.I-K7Zge7o2lsvspqNfuHzEXsjgtKwlfIZBNp3KlPHGw",
+      "user_id":1,
+      "updatedAt":"2019-03-08T06:22:03.775Z",
+      "createdAt":"2019-03-08T06:22:03.775Z"
+      }
+    }
+    ```
 
 ### Get Dish
 ```
