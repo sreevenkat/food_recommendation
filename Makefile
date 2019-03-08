@@ -12,8 +12,14 @@ up: build-app
 down:
 	$(DOCKER_COMPOSE) down
 
+db:
+	$(DOCKER_COMPOSE) exec db createdb -U postgres food_recommendation
+
 migrate:
 	$(DOCKER_COMPOSE) exec node node_modules/.bin/sequelize db:migrate
+
+seed:
+	$(DOCKER_COMPOSE) exec node node helper.js
 
 build-app:
 	$(DOCKER) build . -t foodapi
